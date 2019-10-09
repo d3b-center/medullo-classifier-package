@@ -1,1 +1,7 @@
 inst/doc
+.Rproj.user
+.Rhistory
+.RData
+.Rbuildignore
+.DS_Store
+vignettes/.DS_Store
