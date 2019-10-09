@@ -1,0 +1,39 @@
+#' @title Calc Stats
+#' @author Sherjeel Arif
+#' @name calcStats
+#' @description Classify statistics on prediction class and actual class
+#' @details the function provides an accuracy score of how well the prediction class performed
+#' in comparison to the actual class.
+#'
+#' @param myClassActual jlkjkl
+#' @param myClassPred kjllkjl
+#'
+#' @export
+
+
+#######################
+# Required Libraries
+#######################
+
+library("pheatmap")
+library("GSVA");
+library("caret")
+library("preprocessCore");
+source("~/medulloPackage/R/calcScore.R")
+
+
+calcStats <- function(myClassActual = NULL, myClassPred = NULL) {
+  x <- sum(lengths(regmatches(myClassActual, gregexpr("U", myClassActual)))) # counts "U"'s : the number of unknowns
+  myScore <- sum(myClassPred==myClassActual)/(length(myClassActual)-sum(x)) # calculate accuracy score
+
+  sampAnnot <- data.frame(myClassPred, myClassActual);
+  #colnames(sampAnnot) <- c("Pred", "Actual")
+  #rownames(sampAnnot) <- colnames(geneRatioOut)
+  sampAnnot[,"Correct"] <- myClassPred==myClassActual
+  sampAnnot <- sampAnnot[sampAnnot[,2]!="U",]
+  sampAnnot[,2] <- factor(sampAnnot[,2], levels=c("Group3", "Group4", "WNT", "SHH"))
+  sampAnnot[,1] <- factor(sampAnnot[,1], levels=c("Group3", "Group4", "WNT", "SHH"))
+
+  #print(confusionMatrix(sampAnnot[,1], sampAnnot[,2]));
+  return(myScore)
+}

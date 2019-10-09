@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1570338704154.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1495015276",
+    "id" : "EE796309",
+    "lastKnownWriteTime" : 1570341655,
+    "last_content_update" : 1570341655432,
+    "path" : "~/medulloPackage/R/runLimma.R",
+    "project_path" : "R/runLimma.R",
+    "properties" : {
+        "cursorPosition" : "7,17",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

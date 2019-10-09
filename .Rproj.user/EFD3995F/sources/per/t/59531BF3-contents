@@ -1,0 +1,21 @@
+#' @title Calc score
+#' @author Pichai Raman
+#' @description  Function to calculate score
+#' @details hello
+#' @param myMat Matrix
+#' @param mySetsUp another matrix input
+#' @export
+#'
+
+calcScoreMat <- function(myMat=NULL, mySetsUp=NULL)
+{
+  getScoreSet <- function(x, myMat=myMat)
+  {
+    return(colMeans(myMat[x,]))
+  }
+
+  myMatUp <- data.frame(lapply(mySetsUp,FUN=getScoreSet, myMat));
+  return(myMatUp)
+}
+
+

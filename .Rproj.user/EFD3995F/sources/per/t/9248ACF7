@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1570341701634.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2795078796",
+    "id" : "9248ACF7",
+    "lastKnownWriteTime" : 1570341715,
+    "last_content_update" : 1570341715327,
+    "path" : "~/medulloPackage/R/PullFeaturesGSE37418.R",
+    "project_path" : "R/PullFeaturesGSE37418.R",
+    "properties" : {
+        "cursorPosition" : "7,29",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
