@@ -12,7 +12,7 @@
 ##################
 # Libraries
 ##################
-library(reshape2);
+require('reshape2');
 
 
 signatureGenes <- function(exprs = NULL) {
