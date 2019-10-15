@@ -22,8 +22,8 @@ signatureGenes <- function(exprs = NULL) {
   #and Create Gene Ratios
   ################################
 
-  signatureProbes <- readRDS("data/bestFeaturesNew.RDS")
-  medulloGeneSetsUp <- readRDS("data/medulloSetsUp.RDS")
+  signatureProbes <- get(data("bestFeaturesNew"))
+  medulloGeneSetsUp <- get(data("medulloSetsUp"))
 
   getGenes <- function(x)
   {

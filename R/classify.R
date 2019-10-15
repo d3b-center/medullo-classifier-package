@@ -24,7 +24,8 @@ library(reshape2)
 
 classify <- function(exprs = NULL)
 {
-  medulloGeneSetsUp <- readRDS("data/medulloSetsUp.RDS")
+  # medulloGeneSetsUp <- readRDS("data/medulloSetsUp.RDS")
+  medulloGeneSetsUp <- get(data("medulloSetsUp"))
 
   # calculate gene ratio matrix
   geneRatioOut <- signatureGenes(exprs)
