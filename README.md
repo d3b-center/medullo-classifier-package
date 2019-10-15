@@ -43,5 +43,10 @@ In order to run the package, you need two types of input:
 	2. A vector of length M containing Medulloblastoma subtypes corresponding to each sample identifier. Allowed values are G3, G4, SHH, WNT and U (for Unknown)
 
 
+There are two functions to run:
 
+	1. classify
+	predicted_classes <- classify(exprs = expression_matrix) 
+	2. stats
+	accuracy <- calcStats(observed_classes, predicted_classes)
 
