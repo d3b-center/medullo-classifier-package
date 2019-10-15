@@ -19,7 +19,7 @@
 #' @export
 #'
 
-library(reshape2)
+require('reshape2')
 # source("~/medulloPackage/R/signatureGenes.R")
 
 classify <- function(exprs = NULL)
