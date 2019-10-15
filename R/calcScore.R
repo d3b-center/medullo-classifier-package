@@ -15,10 +15,8 @@
 #' @export
 #'
 
-calcScoreMat <- function(myMat=NULL, mySetsUp=NULL)
-{
-  getScoreSet <- function(x, myMat=myMat)
-  {
+calcScoreMat <- function(myMat=NULL, mySetsUp=NULL) {
+  getScoreSet <- function(x, myMat=myMat) {
     return(colMeans(myMat[x,]))
   }
 

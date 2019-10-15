@@ -8,24 +8,24 @@
 #' @name classify
 #' @author Pichai Raman
 #' @author Sherjeel Arif
+#' @author Komal Rathi
 #' @description  Function to classify
 #' @details Classifier for predicting amongst the 4 molecular subtypes of
 #' Medulloblastoma, Sonic Hedgehog (SHH), WNT, Group 3, and Group 4 from
 #' RNA-Seq or microarray data.
-#' @param geneRatioOut matrix containing gene ratios for each gene signature and sample.
-#' The row names contain the gene signatures and the column names contain the individual samples.
+#' @param exprs matrix containing gene expression values.
+#' The row names contain HUGO gene symbols and the column names contain the sample identifiers.
 #' @param medulloGeneSetsUp list of 4 containing the gene signature associated with
 #' each of the 4 molecular subtypes of Medulloblastoma.
 #' @export
 #'
 
-require('reshape2')
-# source("~/medulloPackage/R/signatureGenes.R")
+classify <- function(exprs = NULL, medulloGeneSetsUp = NULL) {
 
-classify <- function(exprs = NULL)
-{
-  # medulloGeneSetsUp <- readRDS("data/medulloSetsUp.RDS")
-  medulloGeneSetsUp <- get(data("medulloSetsUp"))
+  # if no value is supplied, use default data
+  if(is.null(medulloGeneSetsUp)) {
+    medulloGeneSetsUp <- get(utils::data("medulloSetsUp"))
+  }
 
   # calculate gene ratio matrix
   geneRatioOut <- signatureGenes(exprs)

@@ -35,15 +35,7 @@
 # Required Libraries
 #######################
 
-library(pheatmap)
-library(GSVA)
-library(caret)
-library(lattice)
-library(preprocessCore)
-# source("~/medulloPackage/R/calcScore.R")
-
-
-calcStats <- function(myClassActual = NULL, myClassPred = NULL) {
+ calcStats <- function(myClassActual = NULL, myClassPred = NULL) {
   x <- sum(lengths(regmatches(myClassActual, gregexpr("U", myClassActual)))) # counts "U"'s : the number of unknowns
   myScore <- sum(myClassPred==myClassActual)/(length(myClassActual)-sum(x)) # calculate accuracy score
 
