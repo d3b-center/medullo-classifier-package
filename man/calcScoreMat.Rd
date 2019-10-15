@@ -7,13 +7,14 @@
 calcScoreMat(myMat = NULL, mySetsUp = NULL)
 }
 \arguments{
-\item{myMat}{matrix containing gene ratios for each gene signature and sample.}
+\item{myMat}{matrix containing gene ratios for each gene signature and sample. The row names
+contain the gene signatures and the column names contain the individual samples.}
 
 \item{mySetsUp}{list of 4 containing the gene ratios associated with
-each of the 4 molecular subtypes of Medulloblastoma.}
+each of the 4 molecular subtypes of Medulloblastoma. Provided in the data directory.}
 }
 \description{
-Function to calculate column mean for each sample in myMat Matrix.
+Function to calculate the gene ratio for each sample.
 }
 \details{
 None

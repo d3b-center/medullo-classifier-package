@@ -16,6 +16,25 @@ The results reflect testing among 2 separate datasets although more independent 
 
 ![Results](images/resultsDataset3_4.png)
 
+## Steps to Install Package
+To install the package inside RStudion console:
+```
+devtools::install_github("sherjeel275/medulloClassifierPackage")
+```
+\
+To install the package from terminal, first clone the repository:
+```
+# HTTPS
+git clone https://github.com/sherjeel275/medulloClassifierPackage.git
+
+# SSH
+git clone git@github.com:sherjeel275/medulloClassifierPackage.git
+```
+\
+Next, use following command inside terminal:
+```
+R CMD INSTALL --no-multiarch --with-keep.source medulloClassifierPackage
+```
 
 
 

@@ -3,14 +3,11 @@
 \name{classify}
 \alias{classify}
 \title{Classify}
-\usage{
-classify(geneRatioOut = NULL,
-  medulloGeneSetsUp = "../../data/medulloSetsUp.RDS")
-}
 \arguments{
-\item{geneRatioOut}{Matrix containing the gene ratios for different samples.}
+\item{geneRatioOut}{matrix containing gene ratios for each gene signature and sample.
+The row names contain the gene signatures and the column names contain the individual samples.}
 
-\item{medulloGeneSetsUp}{list of 4 containing the gene ratios associated with
+\item{medulloGeneSetsUp}{list of 4 containing the gene signature associated with
 each of the 4 molecular subtypes of Medulloblastoma.}
 }
 \description{

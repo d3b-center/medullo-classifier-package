@@ -3,3 +3,4 @@
 export(calcScoreMat)
 export(calcStats)
 export(classify)
+export(signatureGenes)

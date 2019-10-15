@@ -21,7 +21,7 @@ calculates an accuracy score, a confidence interval, creates a confusion
 matrix, and displays other useful statistics (i.e. Sensitivity, Specificity).
 
 The parameters are character vectors and each value in the vector corresponds to
-1 of the 4 molecular subtypes of Medulloblastoma (i.e. Sonic Hedgehog (SHH),
+one of the four molecular subtypes of Medulloblastoma (i.e. Sonic Hedgehog (SHH),
 WNT, Group 3, and Group 4).
 }
 \examples{

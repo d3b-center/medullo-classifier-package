@@ -10,7 +10,7 @@
 #' matrix, and displays other useful statistics (i.e. Sensitivity, Specificity).
 #'
 #' The parameters are character vectors and each value in the vector corresponds to
-#' 1 of the 4 molecular subtypes of Medulloblastoma (i.e. Sonic Hedgehog (SHH),
+#' one of the four molecular subtypes of Medulloblastoma (i.e. Sonic Hedgehog (SHH),
 #' WNT, Group 3, and Group 4).
 #'
 #' @param myClassActual a vector of characters corresponding to the actual
@@ -35,11 +35,11 @@
 # Required Libraries
 #######################
 
-library("pheatmap")
-library("GSVA");
-library("caret")
-library("lattice")
-library("preprocessCore");
+library(pheatmap)
+library(GSVA)
+library(caret)
+library(lattice)
+library(preprocessCore)
 source("~/medulloPackage/R/calcScore.R")
 
 
@@ -53,7 +53,7 @@ calcStats <- function(myClassActual = NULL, myClassPred = NULL) {
   sampAnnot[,2] <- factor(sampAnnot[,2], levels=c("Group3", "Group4", "WNT", "SHH"))
   sampAnnot[,1] <- factor(sampAnnot[,1], levels=c("Group3", "Group4", "WNT", "SHH"))
 
-  print(confusionMatrix(sampAnnot[,1], sampAnnot[,2]));
+  print(caret::confusionMatrix(sampAnnot[,1], sampAnnot[,2]));
 
   writeLines("")
   print(paste("Accuracy: ", myScore))
