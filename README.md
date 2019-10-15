@@ -36,6 +36,11 @@ Next, use following command inside terminal:
 R CMD INSTALL --no-multiarch --with-keep.source medulloClassifierPackage
 ```
 
+## Run
+In order to run the package, you need two types of input:
+
+	1. A dataframe of NxM dimension containing expression values. Rownames are HUGO/HGNC gene symbols and column names are Sample identifiers.
+	2. A vector of length M containing Medulloblastoma subtypes corresponding to each sample identifier. Allowed values are G3, G4, SHH, WNT and U (for Unknown)
 
 
 
