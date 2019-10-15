@@ -19,7 +19,10 @@ Imports:
     caret,
     lattice,
     dplyr,
-    reshape2
+    reshape2,
+    pheatmap,
+    GSVA,
+    preprocessCore
 Suggests: 
     knitr,
     rmarkdown
