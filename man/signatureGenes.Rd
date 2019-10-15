@@ -3,9 +3,14 @@
 \name{signatureGenes}
 \alias{signatureGenes}
 \title{Signature Genes}
+\usage{
+signatureGenes(exprs = NULL, signatureProbes = NULL)
+}
 \arguments{
 \item{exprs}{expression matrix in which the rows contains the gene symbols and the
 columns are the samples. The values inside the matrix are the respective gene signatures.}
+
+\item{signatureProbes}{character vector of gene signature}
 }
 \description{
 Function to calculate gene ratio matrix
@@ -16,4 +21,8 @@ as the only parameter.
 }
 \author{
 Pichai Raman
+
+Sherjeel Arif
+
+Komal Rathi
 }

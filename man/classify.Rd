@@ -3,9 +3,12 @@
 \name{classify}
 \alias{classify}
 \title{Classify}
+\usage{
+classify(exprs = NULL, medulloGeneSetsUp = NULL)
+}
 \arguments{
-\item{geneRatioOut}{matrix containing gene ratios for each gene signature and sample.
-The row names contain the gene signatures and the column names contain the individual samples.}
+\item{exprs}{matrix containing gene expression values.
+The row names contain HUGO gene symbols and the column names contain the sample identifiers.}
 
 \item{medulloGeneSetsUp}{list of 4 containing the gene signature associated with
 each of the 4 molecular subtypes of Medulloblastoma.}
@@ -22,4 +25,6 @@ RNA-Seq or microarray data.
 Pichai Raman
 
 Sherjeel Arif
+
+Komal Rathi
 }

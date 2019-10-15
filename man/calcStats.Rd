@@ -3,6 +3,9 @@
 \name{calcStats}
 \alias{calcStats}
 \title{Calc Stats}
+\usage{
+calcStats(myClassActual = NULL, myClassPred = NULL)
+}
 \arguments{
 \item{myClassActual}{a vector of characters corresponding to the actual
 classification for each sample in the dataset.}
