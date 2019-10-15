@@ -18,7 +18,8 @@ RoxygenNote: 6.1.1
 Imports: 
     caret,
     lattice,
-    dplyr
+    dplyr,
+    reshape2
 Suggests: 
     knitr,
     rmarkdown
