@@ -45,8 +45,9 @@ In order to run the package, you need two types of input:
 
 There are two functions to run:
 
-	1. classify
+	1. classify samples into medulloblastoma subtypes 
 	predicted_classes <- classify(exprs = expression_matrix) 
-	2. stats
+
+	2. compute stats on accuracy
 	accuracy <- calcStats(observed_classes, predicted_classes)
 
