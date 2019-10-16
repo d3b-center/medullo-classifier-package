@@ -49,5 +49,5 @@
   print(caret::confusionMatrix(sampAnnot[,1], sampAnnot[,2]));
 
   writeLines("")
-  print(paste("Accuracy: ", myScore, "%"))
+  print(paste0("Accuracy: ", myScore, "%"))
 }
