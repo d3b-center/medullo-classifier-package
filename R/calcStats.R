@@ -38,6 +38,7 @@
  calcStats <- function(myClassActual = NULL, myClassPred = NULL) {
   x <- sum(lengths(regmatches(myClassActual, gregexpr("U", myClassActual)))) # counts "U"'s : the number of unknowns
   myScore <- sum(myClassPred==myClassActual)/(length(myClassActual)-sum(x)) # calculate accuracy score
+  myScore <- format(myScore*100, digits = 2)
 
   sampAnnot <- data.frame(myClassPred, myClassActual);
   sampAnnot[,"Correct"] <- myClassPred==myClassActual
@@ -48,5 +49,5 @@
   print(caret::confusionMatrix(sampAnnot[,1], sampAnnot[,2]));
 
   writeLines("")
-  print(paste("Accuracy: ", myScore))
+  print(paste("Accuracy: ", myScore, "%"))
 }
