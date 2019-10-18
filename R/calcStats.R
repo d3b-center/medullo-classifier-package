@@ -47,7 +47,20 @@
   sampAnnot[,1] <- factor(sampAnnot[,1], levels=c("Group3", "Group4", "WNT", "SHH"))
 
   res <- caret::confusionMatrix(sampAnnot[,1], sampAnnot[,2])
-  res <- list(res$table, res$overall, res$byClass)
+
+  # format confusion matrix
+  confusion.matrix <- res$table
+  confusion.matrix <- as.data.frame.matrix(confusion.matrix)
+  rownames(confusion.matrix) <- paste0('Pred_', rownames(confusion.matrix))
+  colnames(confusion.matrix) <- paste0('Ref_', colnames(confusion.matrix))
+
+  # overall stats
+  overall.stats <- data.frame(stats = res$overall)
+
+  # stats by class
+  class.stats <- as.data.frame(res$byClass)
+
+  res <- list(confusion.matrix, overall.stats, class.stats)
   writeLines("")
   print(paste0("Accuracy: ", myScore, "%"))
   return(res)
