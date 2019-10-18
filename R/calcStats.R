@@ -56,9 +56,14 @@
 
   # overall stats
   overall.stats <- data.frame(stats = res$overall)
+  overall.stats <- format(overall.stats, digits =3)
+  overall.stats[1:5,] <- format(paste0(as.numeric(overall.stats[1:5,])*100,"%"), 2)
 
   # stats by class
   class.stats <- as.data.frame(res$byClass)
+  class.stats <- format(class.stats, digits = 3)
+  class.stats[] <- lapply(class.stats, function(x) as.numeric(as.character(x)))
+  class.stats[] <- lapply(class.stats, function(x) paste0(x*100, "%"))
 
   # accuracy in %
   acc <- paste0("Accuracy: ", myScore, "%")
