@@ -60,7 +60,7 @@
   # stats by class
   class.stats <- as.data.frame(res$byClass)
 
-  res <- list(confusion.matrix, overall.stats, class.stats)
+  res <- list(confusion.matrix, overall.stats, class.stats, myScore)
   writeLines("")
   print(paste0("Accuracy: ", myScore, "%"))
   return(res)
