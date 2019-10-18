@@ -46,8 +46,9 @@
   sampAnnot[,2] <- factor(sampAnnot[,2], levels=c("Group3", "Group4", "WNT", "SHH"))
   sampAnnot[,1] <- factor(sampAnnot[,1], levels=c("Group3", "Group4", "WNT", "SHH"))
 
-  print(caret::confusionMatrix(sampAnnot[,1], sampAnnot[,2]));
-
+  res <- caret::confusionMatrix(sampAnnot[,1], sampAnnot[,2])
+  res <- list(res$table, res$overall, res$byClass)
   writeLines("")
   print(paste0("Accuracy: ", myScore, "%"))
+  return(res)
 }
