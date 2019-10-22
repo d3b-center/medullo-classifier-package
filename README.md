@@ -19,7 +19,7 @@ The results reflect testing among 2 separate datasets although more independent 
 ## Steps to Install Package
 To install the package inside RStudion console:
 ```
-devtools::install_github("sherjeel275/medulloClassifierPackage")
+devtools::install_github("d3b-center/medullo-classifier-package")
 ```
 \
 To install the package from terminal, first clone the repository:
