@@ -33,7 +33,7 @@ git clone git@github.com:d3b-center/medullo-classifier-package.git
 \
 Next, use following command inside terminal:
 ```
-R CMD INSTALL --no-multiarch --with-keep.source medulloClassifierPackage
+R CMD INSTALL --no-multiarch --with-keep.source medullo-classifier-package
 ```
 
 ## Run
