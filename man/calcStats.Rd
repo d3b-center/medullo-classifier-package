@@ -8,10 +8,12 @@ calcStats(myClassActual = NULL, myClassPred = NULL)
 }
 \arguments{
 \item{myClassActual}{a vector of characters corresponding to the actual
-classification for each sample in the dataset.}
+classification for each sample in the dataset. The vector can only include the characters
+'WNT', SHH', 'Group3', 'Group4', and 'U'.}
 
 \item{myClassPred}{a vector of characters corresponding to the prediction made
-for each sample.}
+for each sample. The vector can only include the characters
+'WNT', SHH', 'Group3', and 'Group4'.}
 }
 \description{
 Function to calculate statistics on prediction class and
@@ -23,23 +25,43 @@ classification of the provided Medulloblastoma dataset is known. Function
 calculates an accuracy score, a confidence interval, creates a confusion
 matrix, and displays other useful statistics (i.e. Sensitivity, Specificity).
 
-The parameters are character vectors and each value in the vector corresponds to
+The input parameters are character vectors and each value in the vector corresponds to
 one of the four molecular subtypes of Medulloblastoma (i.e. Sonic Hedgehog (SHH),
 WNT, Group 3, and Group 4).
+
+The expected output is a list of length 4. The first element
+in the outputted list is the confusion matrix, which is a data frame of dimension 4x4.
+The second element is a data frame containing overall statistics on the accuracy of the classifier.
+The third element in the the list is also a data frame containing class statistics (e.g.
+Sensitivity, Specificity, etc.). The last element in the list is a character which corresponds
+to the the prediction accuracy of the medulloblastoma classifier.
 }
 \examples{
-## mock prediction class
+## prediction class
 predictionClass <- c("Group3", "WNT", "WNT", "Group4", "SHH", "Group4")
 
-## mock actual class
+## observed class
 actualClass <- c("Group4", "WNT", "SHH", "Group4", "SHH", "Group4")
 
 ## call function to obtain accuracy and other statistics
-medulloPackage::calcStats(actualClass, predictionClass)
+stats <- medulloPackage::calcStats(actualClass, predictionClass)
+
+## View the contents of stats
+confusion.matrix <- stats[[1]]
+overall.stats <- stats[[2]]
+class.stats <- stats[[3]]
+accuracy <- stats[[4]]
+
+head(confusion.matrix)
+head(overall.stats)
+head(class.stats)
+head(accuracy)
 
 }
 \author{
 Pichai Raman
 
 Sherjeel Arif
+
+Komal Rathi
 }
