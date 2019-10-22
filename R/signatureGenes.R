@@ -5,10 +5,26 @@
 #' @author Komal Rathi
 #' @description  Function to calculate gene ratio matrix
 #' @details Function for determining the gene ratio matrix. The function expects an expression matrix
-#' as the only parameter.
-#' @param exprs expression matrix in which the rows contains the gene symbols and the
-#' columns are the samples. The values inside the matrix are the respective gene signatures.
-#' @param signatureProbes character vector of gene signature
+#' as the only necessary input parameter. The expression matrix must be one of the following formats:
+#' (1) FPKM (2) TPM (3)quantile normalized data (4) microarray data.
+#'
+#' The expected output is a matrix data frame in which the row names are the gene ratio symbols and
+#' the column names are the sample identifiers.
+#'
+#' @param exprs expression matrix in which the rows contains the HUGO/HGNC gene symbols and the
+#' columns are the samples identifiers. The entries inside the matrix are the respective gene
+#' expression values. (see details section for more info)
+#' @param signatureProbes character vector of gene signatures
+#' @examples
+#' # Load example data containing expression matrix
+#' data(exprs_109401)
+#'
+#' # use function
+#' geneRatioOut_109401 <- signatureGenes(exprs_109401)
+#'
+#' # View gene ratio matrix
+#' head(geneRatioOut_109401[1:5])
+#'
 #' @export
 #'
 
