@@ -32,10 +32,10 @@ the column names are the 4 Medulloblastoma subtypes.
 }
 \examples{
 ## load provided data
-data(geneRatOut_109401)
+data(geneRatioOut_109401)
 
 ## Use calcScore function
-myMat <- calcScore(geneRatOut_109401)
+myMat <- calcScore(geneRatioOut_109401)
 
 ## View contents of matrix
 head(myMat[1:4])

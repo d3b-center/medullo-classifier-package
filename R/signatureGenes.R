@@ -20,10 +20,10 @@
 #' data(exprs_109401)
 #'
 #' # use function
-#' geneRatioMat <- signatureGenes(exprs_109401)
+#' geneRatioOut_109401 <- signatureGenes(exprs_109401)
 #'
 #' # View gene ratio matrix
-#' head(geneRatioMat[1:5])
+#' head(geneRatioOut_109401[1:5])
 #'
 #' @export
 #'

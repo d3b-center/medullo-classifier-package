@@ -4,4 +4,4 @@
 #' sample. The rownames are the gene ratio symbols and the column names are the sample identifiers.
 #'
 #'
-"geneRatOut_109401"
+"geneRatioOut_109401"

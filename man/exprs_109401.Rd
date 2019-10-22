@@ -3,23 +3,19 @@
 \docType{data}
 \name{exprs_109401}
 \alias{exprs_109401}
-<<<<<<< HEAD
 \title{Example Dataset for testing medulloClassify}
-=======
-\title{Dataset required by medulloClassify}
->>>>>>> d043fc27b1e2b5f3d12877aef58b8fb92a3d8b62
 \format{An object of class \code{data.frame} with 12233 rows and 19 columns.}
 \usage{
 exprs_109401
 }
 \description{
-<<<<<<< HEAD
 Dataset contains an expression matrix where the rownames are HUGO gene
 symbols and the column names contain the sample identifiers.
-=======
+Dataset required by medulloClassify
+}
+\details{
 This dataset contains an expression matrix where the rownames are HUGO gene
 symbols and the column names contain the sample identifiers. Dataset also contains a
 character vector containing the observations (i.e. actual classifications) made for each sample.
->>>>>>> d043fc27b1e2b5f3d12877aef58b8fb92a3d8b62
 }
 \keyword{datasets}
