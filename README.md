@@ -49,7 +49,7 @@ There are two functions to run:
 	predicted_classes <- classify(exprs = expression_matrix) 
 
 	2. compute stats on accuracy
-	accuracy <- calcStats(observed_classes, predicted_classes)
+	accuracy <- calcStats(observed_classes, predicted_classes$best.fit)
 	
 ## Example
 ```
@@ -59,9 +59,11 @@ There are two functions to run:
 > data(exprs_109401)
 > data(actual_109401)
 
+
 # View contents of data
 > head(actual_109401)
 [1] "Group3" "Group3" "Group3" "Group3" "Group3" "Group4"
+
 
 > head(exprs_109401)[1:5]
         GSM2942323 GSM2942324 GSM2942325 GSM2942326 GSM2942327
@@ -72,26 +74,32 @@ TTR      10.133714  11.638654  10.569395   6.961227  11.720996
 CTTNBP2   7.720421   4.493830   5.548766   9.383114   7.196604
 VMP1     10.329404  10.525463  10.342894  10.333212  10.787795
 
+
 # Run classifier
 > pred_109401 <- medulloPackage::classify(exprs_109401)
+
 
 # View output of classifier
 # predicted classes
 > head(pred_109401$best.fit)
 [1] "Group3" "Group3" "Group3" "Group4" "Group3" "Group4"
 
+
 # associated pvalues
 > head(pred_109401$p.value)
 [1] 2.223789e-11 3.590628e-07 1.421319e-08 7.532876e-01 1.834332e-07 6.717847e-02
+
 
 # Calculate statistics
 > stats <- medulloPackage::calcStats(actual_109401, pred_109401)
 [1] "Accuracy: 95%"
 
+
 > confusion.matrix <- stats[[1]]
 > overall.stats <- stats[[2]]
 > class.stats <- stats[[3]]
 > accuracy <- stats[[4]]
+
 
 # View stats
 > head(confusion.matrix)
@@ -101,6 +109,7 @@ Pred_Group4          1          4       0       0
 Pred_WNT             0          0       5       0
 Pred_SHH             0          0       0       5
 
+
 > head(overall.stats)
                   stats
 Accuracy          94.7%
@@ -109,6 +118,7 @@ AccuracyLower     74%
 AccuracyUpper     99.9%
 AccuracyNull      26.3%
 AccuracyPValue 5.23e-10
+
 
 > head(class.stats)
               Sensitivity Specificity Pos Pred Value Neg Pred Value Precision Recall    F1 Prevalence
@@ -121,6 +131,7 @@ Class: Group3          21.1%                21.1%               90%
 Class: Group4          21.1%                26.3%             96.7%
 Class: WNT             26.3%                26.3%              100%
 Class: SHH             26.3%                26.3%              100%
+
 
 > head(accuracy)
 [1] "Accuracy: 95%"
