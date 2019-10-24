@@ -49,8 +49,43 @@ calcScore <- function(myMat=NULL, mySetsUp=NULL) {
     return(colMeans(myMat[x,]))
   }
 
-  myMatUp <- data.frame(lapply(mySetsUp,FUN=getScoreSet, myMat));
-  return(myMatUp)
+  myMatUp <- data.frame(lapply(mySetsUp,FUN=getScoreSet, myMat))
+
+  # for each column, do a t-test across all combinations of medullo subtypes
+  calc.pvalues <- function(x, myMat, mySetsUp) {
+
+    # create a dataframe of four subtypes per sample
+    wnt = myMat[mySetsUp$WNT, x]
+    ssh = myMat[mySetsUp$SHH, x]
+    gr3 = myMat[mySetsUp$Group3, x]
+    gr4 = myMat[mySetsUp$Group4, x]
+    df <- rowr::cbind.fill(wnt, ssh, gr3, gr4, fill = NA)
+    colnames(df) <- c("WNT","SHH","Group3","Group4")
+
+    # compute t-test on all combinations of subtypes
+    combinations <- utils::combn(colnames(df), 2, simplify = FALSE)
+    results <- lapply(seq_along(combinations), function (n) {
+      df <- df[,colnames(df) %in% unlist(combinations[n])]
+      result <- stats::t.test(df[,1], df[,2])$p.value
+      return(result)})
+    df1 <- data.frame(sample = x,
+                      one = matrix(unlist(combinations), ncol = 2, byrow = TRUE)[,1],
+                      two = matrix(unlist(combinations), ncol = 2, byrow = TRUE)[,2],
+                      p.value = unlist(results))
+    df2 <- data.frame(sample = x,
+                      one = matrix(unlist(combinations), ncol = 2, byrow = TRUE)[,2],
+                      two = matrix(unlist(combinations), ncol = 2, byrow = TRUE)[,1],
+                      p.value = unlist(results))
+    results <- unique(rbind(df1, df2))
+    results <- plyr::ddply(.data = results, .variables = "one", .fun = function(x) x[which(x$p.value == max(x$p.value)),])
+  }
+
+  # apply function on all columns
+  # sapply(colnames(myMat), FUN = function(x) calc.pvalues(x, myMat, mySetsUp))
+  pval.list <- lapply(colnames(myMat), FUN = function(x) calc.pvalues(x, myMat, mySetsUp))
+  pval.list <- do.call(rbind, pval.list)
+
+  return(list(myMatUp, pval.list))
 }
 
 

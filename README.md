@@ -76,8 +76,13 @@ VMP1     10.329404  10.525463  10.342894  10.333212  10.787795
 > pred_109401 <- medulloPackage::classify(exprs_109401)
 
 # View output of classifier
-> head(pred_109401)
+# predicted classes
+> head(pred_109401$best.fit)
 [1] "Group3" "Group3" "Group3" "Group4" "Group3" "Group4"
+
+# associated pvalues
+> head(pred_109401$p.value)
+[1] 2.223789e-11 3.590628e-07 1.421319e-08 7.532876e-01 1.834332e-07 6.717847e-02
 
 # Calculate statistics
 > stats <- medulloPackage::calcStats(actual_109401, pred_109401)

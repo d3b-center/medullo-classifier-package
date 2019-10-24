@@ -41,16 +41,29 @@ classify <- function(exprs = NULL, medulloGeneSetsUp = NULL) {
     medulloGeneSetsUp <- get(utils::data("medulloSetsUp"))
   }
 
+  # break if only 1 sample is supplied
+  if(ncol(exprs) == 1){
+    print("Cannot run correlations when only 1 sample is supplied. Rerun with at-least two samples!")
+    return(NULL)
+  }
+
   # calculate gene ratio matrix
   geneRatioOut <- signatureGenes(exprs)
-
 
   medulloGeneSetsUp$WNT <- intersect(medulloGeneSetsUp$WNT, rownames(geneRatioOut))
   medulloGeneSetsUp$SHH <- intersect(medulloGeneSetsUp$SHH, rownames(geneRatioOut))
   medulloGeneSetsUp$Group3 <- intersect(medulloGeneSetsUp$Group3, rownames(geneRatioOut))
   medulloGeneSetsUp$Group4 <- intersect(medulloGeneSetsUp$Group4, rownames(geneRatioOut))
 
-  myMat <- calcScore(geneRatioOut, medulloGeneSetsUp);
-  myClassPred <- colnames(myMat)[max.col(myMat,ties.method="first")]
-  return(myClassPred)
+  myMat <- calcScore(geneRatioOut, medulloGeneSetsUp)
+  pred <- myMat[[1]]
+  pval <- myMat[[2]]
+
+  # pvalues subset by predictions
+  pred$best.fit <- colnames(pred)[max.col(pred, ties.method="first")]
+  pred$sample <- rownames(pred)
+  pred <- merge(pred, pval, by.x = c('sample','best.fit'), by.y = c('sample','one'))
+  pred.df <- pred[,c('sample','best.fit','p.value')]
+
+  return(pred.df)
 }

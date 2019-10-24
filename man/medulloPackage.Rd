@@ -39,12 +39,14 @@ data(actual_109401)
 
 ## use classification function on expression matrix
 pred_109401 <- medulloPackage::classify(exprs_109401)
+pred_109401.classes <- pred_109401$best.fit # get the predicted classes
+pred_109401.pvals <- pred_109401$p.value # get associated p-values
 
 ## View output of classifier
-head(pred_109401)
+head(pred_109401.classes)
 
 ## Calculate statistics
-stats <- medulloPackage::calcStats(actual_109401, pred_109401)
+stats <- medulloPackage::calcStats(actual_109401, pred_109401.classes)
 
 ## View stats
 confusion.matrix <- stats[[1]]
