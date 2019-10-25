@@ -20,10 +20,14 @@ transcriptomic data.
 \details{
 Classifier for predicting amongst the 4 molecular subtypes of
 Medulloblastoma, Sonic Hedgehog (SHH), WNT, Group 3, and Group 4 from
-RNA-Seq or microarray data. The input is an expression matrix. The following types of data
-are allowed as inputs: (1) FPKM (2) TPM (3) quantile normalized data (4) microarray data. The
-expected output of this function is a character vector containing the Medulloblastoma subtypes
-(i.e. 'WNT', 'SHH', 'Group3', 'Group4').
+RNA-Seq or microarray data.
+
+The input is an expression matrix. The following types of data
+are allowed as inputs: (1) FPKM (2) TPM (3) quantile normalized data (4) microarray data.
+
+The expected output of this function is a dataframe containing three columns: sample name, best.fit which is a character vector
+containing the predicted Medulloblastoma subtypes (i.e. 'WNT', 'SHH', 'Group3', 'Group4') and
+p.value which has the p-values associated with the predictions.
 }
 \examples{
 # Load example data containing expression matrix
@@ -39,7 +43,7 @@ head(prediction)
 \author{
 Pichai Raman
 
-Sherjeel Arif
+Komal S. Rathi
 
-Komal Rathi
+Sherjeel Arif
 }

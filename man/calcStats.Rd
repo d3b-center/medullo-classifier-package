@@ -61,7 +61,7 @@ head(accuracy)
 \author{
 Pichai Raman
 
-Sherjeel Arif
+Komal S. Rathi
 
-Komal Rathi
+Sherjeel Arif
 }

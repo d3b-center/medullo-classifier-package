@@ -38,7 +38,7 @@ head(geneRatioOut_109401[1:5])
 \author{
 Pichai Raman
 
-Sherjeel Arif
+Komal S. Rathi
 
-Komal Rathi
+Sherjeel Arif
 }

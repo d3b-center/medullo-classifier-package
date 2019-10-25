@@ -27,8 +27,9 @@ The function takes the gene ratio matrix and computes the column mean. However, 
 not use all the values in the column. Only the values of the gene ratios associated with a given
 Medulloblastoma subtype are used to compute a column mean.
 
-The expected output is a matrix data frame where the rownames are the Sample Identifiers and
-the column names are the 4 Medulloblastoma subtypes.
+The expected output is a list of two dataframes:
+one is a data frame where the rownames are the Sample Identifiers and the column names are the 4 Medulloblastoma subtypes.
+and the second is a data frame of t-test pvalues across all combination of subtypes per samples
 }
 \examples{
 ## load provided data
@@ -38,11 +39,18 @@ data(geneRatioOut_109401)
 myMat <- calcScore(geneRatioOut_109401)
 
 ## View contents of matrix
-head(myMat[1:4])
+
+# mean scores
+head(myMat[[1]][1:4])
+
+# t-test pvalues
+head(myMat[[2]][1:4])
 
 }
 \author{
 Pichai Raman
+
+Komal S. Rathi
 
 Sherjeel Arif
 }
