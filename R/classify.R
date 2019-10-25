@@ -7,16 +7,21 @@
 #' @title Classify
 #' @name classify
 #' @author Pichai Raman
+#' @author Komal S. Rathi
 #' @author Sherjeel Arif
-#' @author Komal Rathi
 #' @description  Function to Classify samples into Medulloblastoma subtypes using
 #' transcriptomic data.
 #' @details Classifier for predicting amongst the 4 molecular subtypes of
 #' Medulloblastoma, Sonic Hedgehog (SHH), WNT, Group 3, and Group 4 from
-#' RNA-Seq or microarray data. The input is an expression matrix. The following types of data
-#' are allowed as inputs: (1) FPKM (2) TPM (3) quantile normalized data (4) microarray data. The
-#' expected output of this function is a character vector containing the Medulloblastoma subtypes
-#' (i.e. 'WNT', 'SHH', 'Group3', 'Group4').
+#' RNA-Seq or microarray data.
+#'
+#' The input is an expression matrix. The following types of data
+#' are allowed as inputs: (1) FPKM (2) TPM (3) quantile normalized data (4) microarray data.
+#'
+#' The expected output of this function is a dataframe containing three columns: sample name, best.fit which is a character vector
+#' containing the predicted Medulloblastoma subtypes (i.e. 'WNT', 'SHH', 'Group3', 'Group4') and
+#' p.value which has the p-values associated with the predictions.
+#'
 #' @param exprs matrix containing gene expression values.
 #' The row names contain HUGO/HGNC gene symbols and the column names contain the sample identifiers.
 #' @param medulloGeneSetsUp list of 4 containing the gene signature associated with

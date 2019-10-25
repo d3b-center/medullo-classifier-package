@@ -1,8 +1,8 @@
 #' @title Signature Genes
 #' @name signatureGenes
 #' @author Pichai Raman
+#' @author Komal S. Rathi
 #' @author Sherjeel Arif
-#' @author Komal Rathi
 #' @description  Function to calculate gene ratio matrix
 #' @details Function for determining the gene ratio matrix. The function expects an expression matrix
 #' as the only necessary input parameter. The expression matrix must be one of the following formats:

@@ -6,6 +6,7 @@
 
 #' @title Calc score
 #' @author Pichai Raman
+#' @author Komal S. Rathi
 #' @author Sherjeel Arif
 #' @description  Function to calculate the gene ratio for each sample.
 #' @details This function takes 2 input parameters. The first parameter is a gene ratio matrix
@@ -17,8 +18,9 @@
 #' not use all the values in the column. Only the values of the gene ratios associated with a given
 #' Medulloblastoma subtype are used to compute a column mean.
 #'
-#' The expected output is a matrix data frame where the rownames are the Sample Identifiers and
-#' the column names are the 4 Medulloblastoma subtypes.
+#' The expected output is a list of two dataframes:
+#' one is a data frame where the rownames are the Sample Identifiers and the column names are the 4 Medulloblastoma subtypes.
+#' and the second is a data frame of t-test pvalues across all combination of subtypes per samples
 #'
 #' @param myMat matrix containing gene ratios for each gene signature and sample. The row names
 #' contain the gene signatures and the column names contain the individual samples.
@@ -34,7 +36,12 @@
 #' myMat <- calcScore(geneRatioOut_109401)
 #'
 #' ## View contents of matrix
-#' head(myMat[1:4])
+#'
+#' # mean scores
+#' head(myMat[[1]][1:4])
+#'
+#' # t-test pvalues
+#' head(myMat[[2]][1:4])
 #'
 #' @export
 #'

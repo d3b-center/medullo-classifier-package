@@ -1,7 +1,7 @@
 #' @title Calc Stats
 #' @author Pichai Raman
+#' @author Komal S. Rathi
 #' @author Sherjeel Arif
-#' @author Komal Rathi
 #' @name calcStats
 #' @description Function to calculate statistics on prediction class and
 #' actual class of a medulloblastoma dataset.
