@@ -63,12 +63,15 @@ classify <- function(exprs = NULL, medulloGeneSetsUp = NULL) {
   myMat <- calcScore(geneRatioOut, medulloGeneSetsUp)
   pred <- myMat$pred
   pval <- myMat$pval
+  sample.order <- rownames(pred)
 
   # pvalues subset by predictions
   pred$best.fit <- colnames(pred)[max.col(pred, ties.method = "first")]
   pred$sample <- rownames(pred)
   pred <- merge(pred, pval, by.x = c('sample','best.fit'), by.y = c('sample','one'))
   pred.df <- pred[,c('sample','best.fit','p.value')]
+  rownames(pred.df) <- pred.df$sample
+  pred.df <- pred.df[sample.order,] # keeping the correct order
 
   return(pred.df)
 }
