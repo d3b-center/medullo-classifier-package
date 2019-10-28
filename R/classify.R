@@ -61,11 +61,11 @@ classify <- function(exprs = NULL, medulloGeneSetsUp = NULL) {
   medulloGeneSetsUp$Group4 <- intersect(medulloGeneSetsUp$Group4, rownames(geneRatioOut))
 
   myMat <- calcScore(geneRatioOut, medulloGeneSetsUp)
-  pred <- myMat[[1]]
-  pval <- myMat[[2]]
+  pred <- myMat$pred
+  pval <- myMat$pval
 
   # pvalues subset by predictions
-  pred$best.fit <- colnames(pred)[max.col(pred, ties.method="first")]
+  pred$best.fit <- colnames(pred)[max.col(pred, ties.method = "first")]
   pred$sample <- rownames(pred)
   pred <- merge(pred, pval, by.x = c('sample','best.fit'), by.y = c('sample','one'))
   pred.df <- pred[,c('sample','best.fit','p.value')]

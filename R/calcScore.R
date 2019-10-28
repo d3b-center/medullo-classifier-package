@@ -46,17 +46,17 @@
 #' @export
 #'
 
-calcScore <- function(myMat=NULL, mySetsUp=NULL) {
+calcScore <- function(myMat = NULL, mySetsUp = NULL) {
   # if no value is supplied, use default data
   if(is.null(mySetsUp)) {
     mySetsUp <- get(utils::data("medulloSetsUp"))
   }
 
-  getScoreSet <- function(x, myMat=myMat) {
+  getScoreSet <- function(x, myMat = myMat) {
     return(colMeans(myMat[x,]))
   }
 
-  myMatUp <- data.frame(lapply(mySetsUp,FUN=getScoreSet, myMat))
+  myMatUp <- data.frame(lapply(mySetsUp, FUN = getScoreSet, myMat))
 
   # for each column, do a t-test across all combinations of medullo subtypes
   calc.pvalues <- function(x, myMat, mySetsUp) {
@@ -75,24 +75,26 @@ calcScore <- function(myMat=NULL, mySetsUp=NULL) {
       df <- df[,colnames(df) %in% unlist(combinations[n])]
       result <- stats::t.test(df[,1], df[,2])$p.value
       return(result)})
+
     df1 <- data.frame(sample = x,
                       one = matrix(unlist(combinations), ncol = 2, byrow = TRUE)[,1],
                       two = matrix(unlist(combinations), ncol = 2, byrow = TRUE)[,2],
                       p.value = unlist(results))
+
     df2 <- data.frame(sample = x,
                       one = matrix(unlist(combinations), ncol = 2, byrow = TRUE)[,2],
                       two = matrix(unlist(combinations), ncol = 2, byrow = TRUE)[,1],
                       p.value = unlist(results))
+
     results <- unique(rbind(df1, df2))
     results <- plyr::ddply(.data = results, .variables = "one", .fun = function(x) x[which(x$p.value == max(x$p.value)),])
   }
 
   # apply function on all columns
-  # sapply(colnames(myMat), FUN = function(x) calc.pvalues(x, myMat, mySetsUp))
   pval.list <- lapply(colnames(myMat), FUN = function(x) calc.pvalues(x, myMat, mySetsUp))
   pval.list <- do.call(rbind, pval.list)
 
-  return(list(myMatUp, pval.list))
+  return(list(pred = myMatUp, pval = pval.list))
 }
 
 
