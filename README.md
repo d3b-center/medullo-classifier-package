@@ -52,7 +52,7 @@ In order to run the package, you need two types of input:
 
 	2. Subtype information
 		* A vector of length M containing Medulloblastoma subtypes corresponding to each sample identifier. 
-		* Allowed values are **G3, G4, SHH, WNT and U (for Unknown)**
+		* Allowed values are **Group3, Group4, SHH, WNT and U (for Unknown)**
 
 *NOTE:* At least two samples are required for classification, as there is a step that includes calculating correlations. 
 
