@@ -45,11 +45,14 @@ R CMD INSTALL --no-multiarch --with-keep.source medullo-classifier-package
 ## Run
 In order to run the package, you need two types of input:
 
-	1. A dataframe of NxM dimension containing expression values. 
-	Rownames are HUGO/HGNC gene symbols and column names are Sample identifiers. 
-	The following types of expression data are allowed as inputs: (1) FPKM (2) TPM (3) quantile normalized data (4) microarray data.
-	2. A vector of length M containing Medulloblastoma subtypes corresponding to each sample identifier. 
-	Allowed values are **G3, G4, SHH, WNT and U (for Unknown)**
+	1. Expression Matrix
+		* A dataframe of NxM dimension containing expression values. 
+		* Rownames are HUGO/HGNC gene symbols and column names are Sample identifiers. 
+		* The following types of expression data are allowed as inputs: (1) FPKM (2) TPM (3) quantile normalized data (4) microarray data.
+
+	2. Subtype information
+		* A vector of length M containing Medulloblastoma subtypes corresponding to each sample identifier. 
+		* Allowed values are **G3, G4, SHH, WNT and U (for Unknown)**
 
 *NOTE:* At least two samples are required for classification, as there is a step that includes calculating correlations. 
 
@@ -62,6 +65,9 @@ There are two functions to run:
 	accuracy <- calcStats(observed_classes, predicted_classes$best.fit)
 	
 ## Example
+
+This is an example run with the GEO dataset GSE109401:
+
 ```
 > library(medulloPackage)
 
