@@ -87,12 +87,14 @@ calcScore <- function(myMat = NULL, mySetsUp = NULL) {
                       p.value = unlist(results))
 
     results <- unique(rbind(df1, df2))
+    results$p.value[is.na(results$p.value)] <- 0 # added
     results <- plyr::ddply(.data = results, .variables = "one", .fun = function(x) x[which(x$p.value == max(x$p.value)),])
   }
 
   # apply function on all columns
   pval.list <- lapply(colnames(myMat), FUN = function(x) calc.pvalues(x, myMat, mySetsUp))
   pval.list <- do.call(rbind, pval.list)
+  pval.list <- unique(pval.list[,c("sample","one","p.value")]) # added
 
   return(list(pred = myMatUp, pval = pval.list))
 }

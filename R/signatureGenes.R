@@ -70,6 +70,7 @@ signatureGenes <- function(exprs = NULL, signatureProbes = NULL) {
 
   rownames(geneRatioOut) <- paste(corGenes[,1], corGenes[,2], sep="_");
   colnames(geneRatioOut) <- colnames(exprs)
+  geneRatioOut <- geneRatioOut[!is.infinite(rowSums(geneRatioOut)),] # added
 
   ################################
   #Filter to signature ratios
