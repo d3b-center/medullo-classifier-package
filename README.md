@@ -107,7 +107,7 @@ VMP1     10.329404  10.525463  10.342894  10.333212  10.787795
 
 
 # Calculate statistics
-> stats <- medulloPackage::calcStats(actual_109401, pred_109401)
+> stats <- medulloPackage::calcStats(actual_109401, pred_109401$best.fit)
 [1] "Accuracy: 95%"
 
 
