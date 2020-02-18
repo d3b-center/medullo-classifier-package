@@ -38,10 +38,10 @@
 #' ## View contents of matrix
 #'
 #' # mean scores
-#' head(myMat[[1]][1:4])
+#' head(myMat[[1]])
 #'
 #' # t-test pvalues
-#' head(myMat[[2]][1:4])
+#' head(myMat[[2]])
 #'
 #' @export
 #'
