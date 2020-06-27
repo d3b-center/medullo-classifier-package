@@ -4,8 +4,8 @@ Title: Medulloblastoma Classifier
 Version: 0.1.0
 Author: c(person("Pichai", "Raman", email = "ramanp@email.chop.edu",
     role = c("aut", "cre")),
-    person("Sherjeel", "Arif", role = c("aut")))
-Maintainer: Pichai Raman <ramanp@email.chop.edu>
+    person("Komal", "Rathi", role = c("aut")))
+Maintainer: Komal S. Rathi <rathik@email.chop.edu>
 Description: Goal of this project was to create a 
     classifier/model to accurately predict amongst 4 molecular 
     subtypes of Medulloblastoma, Sonic Hedgehog (SHH), WNT, 
@@ -14,15 +14,15 @@ Description: Goal of this project was to create a
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.0.1
+RoxygenNote: 7.1.0
 biocViews:
 Imports: 
     caret,
+    e1071,
     lattice,
     plyr,
     dplyr,
-    reshape2,
-    rowr
+    reshape2
 Suggests: 
     knitr,
     rmarkdown

@@ -4,7 +4,9 @@
 \name{bestFeaturesNew}
 \alias{bestFeaturesNew}
 \title{Dataset required by medulloClassify}
-\format{A character vector of 279 genes}
+\format{
+A character vector of 279 genes
+}
 \usage{
 bestFeaturesNew
 }

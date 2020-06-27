@@ -53,7 +53,7 @@ calcScore <- function(myMat = NULL, mySetsUp = NULL) {
   }
 
   getScoreSet <- function(x, myMat = myMat) {
-    return(colMeans(myMat[x,]))
+    return(colMeans(myMat[rownames(myMat) %in% x,]))
   }
 
   myMatUp <- data.frame(lapply(mySetsUp, FUN = getScoreSet, myMat))
@@ -62,11 +62,18 @@ calcScore <- function(myMat = NULL, mySetsUp = NULL) {
   calc.pvalues <- function(x, myMat, mySetsUp) {
 
     # create a dataframe of four subtypes per sample
-    wnt = myMat[mySetsUp$WNT, x]
-    ssh = myMat[mySetsUp$SHH, x]
-    gr3 = myMat[mySetsUp$Group3, x]
-    gr4 = myMat[mySetsUp$Group4, x]
-    df <- rowr::cbind.fill(wnt, ssh, gr3, gr4, fill = NA)
+    wnt = myMat[rownames(myMat) %in% mySetsUp$WNT, x]
+    ssh = myMat[rownames(myMat) %in% mySetsUp$SHH, x]
+    gr3 = myMat[rownames(myMat) %in% mySetsUp$Group3, x]
+    gr4 = myMat[rownames(myMat) %in% mySetsUp$Group4, x]
+
+    # make vectors of same length (using max length subgroup)
+    n <- max(length(wnt), length(ssh), length(gr3), length(gr4))
+    length(wnt) <- n
+    length(ssh) <- n
+    length(gr3) <- n
+    length(gr4) <- n
+    df <- cbind(wnt, ssh, gr3, gr4)
     colnames(df) <- c("WNT","SHH","Group3","Group4")
 
     # compute t-test on all combinations of subtypes

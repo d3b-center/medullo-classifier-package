@@ -4,7 +4,9 @@
 \name{actual_109401}
 \alias{actual_109401}
 \title{Example Dataset for testing medulloClassify}
-\format{An object of class \code{character} of length 19.}
+\format{
+An object of class \code{character} of length 19.
+}
 \usage{
 actual_109401
 }

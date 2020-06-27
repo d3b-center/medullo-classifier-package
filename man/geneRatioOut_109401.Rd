@@ -4,7 +4,9 @@
 \name{geneRatioOut_109401}
 \alias{geneRatioOut_109401}
 \title{Example Dataset for testing calcScore() function}
-\format{An object of class \code{data.frame} with 772 rows and 19 columns.}
+\format{
+An object of class \code{data.frame} with 772 rows and 19 columns.
+}
 \usage{
 geneRatioOut_109401
 }

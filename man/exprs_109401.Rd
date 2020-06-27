@@ -4,7 +4,9 @@
 \name{exprs_109401}
 \alias{exprs_109401}
 \title{Example Dataset for testing medulloClassify}
-\format{An object of class \code{data.frame} with 12233 rows and 19 columns.}
+\format{
+An object of class \code{data.frame} with 12233 rows and 19 columns.
+}
 \usage{
 exprs_109401
 }
