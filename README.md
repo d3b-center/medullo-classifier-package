@@ -48,8 +48,7 @@ In order to run the package, you need two types of input:
 	1. Expression Matrix
 		* A dataframe of NxM dimension containing expression values. 
 		* Rownames are HUGO/HGNC gene symbols and column names are Sample identifiers. 
-		* The following types of expression data are allowed as inputs: (1) FPKM (2) TPM (3) quantile normalized data (4) microarray data. 
-		* FPKM and TPM values need to be log-transformed.
+		* The following types of expression data are allowed as inputs: (1) log2 transformed FPKM (2) log2 transformed TPM (3) quantile normalized data (4) microarray data. 
 
 	2. Subtype information
 		* A vector of length M containing Medulloblastoma subtypes corresponding to each sample identifier. 
