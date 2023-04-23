@@ -14,7 +14,7 @@ Description: Goal of this project was to create a
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.2.3
 biocViews:
 Imports: 
     caret,

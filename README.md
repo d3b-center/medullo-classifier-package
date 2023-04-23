@@ -54,8 +54,6 @@ In order to run the package, you need two types of input:
 		* A vector of length M containing Medulloblastoma subtypes corresponding to each sample identifier. 
 		* Allowed values are **Group3, Group4, SHH, WNT and U (for Unknown)**
 
-*NOTE:* At least two samples are required for classification, as there is a step that includes calculating correlations. 
-
 There are two functions to run:
 
 	1. classify samples into medulloblastoma subtypes 
@@ -92,8 +90,21 @@ VMP1     10.329404  10.525463  10.342894  10.333212  10.787795
 
 
 # Run classifier
-> pred_109401 <- medulloPackage::classify(exprs_109401)
 
+# classify multiple samples together
+pred_109401 <- medulloPackage::classify(exprs = exprs_109401)
+
+# classify one sample at a time
+total <- data.frame()
+for(i in 1:ncol(exprs_109401)){
+  exprs <- exprs_109401[,i,drop = F]
+  pred <- classify(exprs = exprs)
+  total <- rbind(total, pred)
+}
+
+# check if the classification is identical? YES!
+identical(pred_109401, total)
+[1] TRUE
 
 # View output of classifier
 # predicted classes
