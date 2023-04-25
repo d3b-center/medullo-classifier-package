@@ -1,7 +1,7 @@
 Package: medulloPackage
 Type: Package
 Title: Medulloblastoma Classifier
-Version: 0.1.0
+Version: 0.1.1
 Author: c(person("Pichai", "Raman", email = "ramanp@email.chop.edu",
     role = c("aut", "cre")),
     person("Komal", "Rathi", role = c("aut")))
