@@ -53,7 +53,7 @@ calcScore <- function(myMat = NULL, mySetsUp = NULL) {
   }
 
   getScoreSet <- function(x, myMat = myMat) {
-    return(colMeans(myMat[rownames(myMat) %in% x,]))
+    return(colMeans(myMat[rownames(myMat) %in% x,,drop = F]))
   }
 
   myMatUp <- data.frame(lapply(mySetsUp, FUN = getScoreSet, myMat))

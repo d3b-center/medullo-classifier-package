@@ -46,12 +46,6 @@ classify <- function(exprs = NULL, medulloGeneSetsUp = NULL) {
     medulloGeneSetsUp <- get(utils::data("medulloSetsUp"))
   }
 
-  # break if only 1 sample is supplied
-  if(ncol(exprs) == 1){
-    print("Cannot run correlations when only 1 sample is supplied. Rerun with at-least two samples!")
-    return(NULL)
-  }
-
   # calculate gene ratio matrix
   geneRatioOut <- signatureGenes(exprs)
 
@@ -60,7 +54,7 @@ classify <- function(exprs = NULL, medulloGeneSetsUp = NULL) {
   medulloGeneSetsUp$Group3 <- intersect(medulloGeneSetsUp$Group3, rownames(geneRatioOut))
   medulloGeneSetsUp$Group4 <- intersect(medulloGeneSetsUp$Group4, rownames(geneRatioOut))
 
-  myMat <- calcScore(geneRatioOut, medulloGeneSetsUp)
+  myMat <- calcScore(myMat = geneRatioOut, mySetsUp = medulloGeneSetsUp)
   pred <- myMat$pred
   pval <- myMat$pval
   sample.order <- rownames(pred)

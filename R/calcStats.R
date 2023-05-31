@@ -61,7 +61,7 @@
   myScore <- sum(myClassPred==myClassActual)/(length(myClassActual)-sum(x)) # calculate accuracy score
   myScore <- format(myScore*100, digits = 2)
 
-  sampAnnot <- data.frame(myClassPred, myClassActual);
+  sampAnnot <- data.frame(myClassPred, myClassActual)
   sampAnnot[,"Correct"] <- myClassPred==myClassActual
   sampAnnot <- sampAnnot[sampAnnot[,2]!="U",]
   sampAnnot[,2] <- factor(sampAnnot[,2], levels=c("Group3", "Group4", "WNT", "SHH"))

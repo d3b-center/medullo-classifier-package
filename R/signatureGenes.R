@@ -46,38 +46,48 @@ signatureGenes <- function(exprs = NULL, signatureProbes = NULL) {
   }
 
   signatureGenes <- sapply(signatureProbes, FUN=getGenes)
-  signatureGenes <- as.character(signatureGenes);
-  signatureGenes <- unique(signatureGenes);
+  signatureGenes <- as.character(signatureGenes)
+  signatureGenes <- unique(signatureGenes)
 
   #Filter Matrix
-  exprs_SG <- exprs[intersect(rownames(exprs), signatureGenes), ]
+  exprs_SG <- exprs[intersect(rownames(exprs), signatureGenes),,drop = F]
 
   #Create Ratios
   createRatio <- function(x) {
-    g1 <- x[1];
-    g2 <- x[2];
-    g1g2_ratio <- 2^(exprs[g1,]-exprs[g2,])
+    g1 <- x[1]
+    g2 <- x[2]
+    g1g2_ratio <- 2^(exprs[g1,,drop = F]-exprs[g2,,drop = F])
     return(g1g2_ratio)
   }
 
-  corGenes <- stats::cor(t(exprs_SG));
-  corGenes <- data.frame(reshape2::melt(corGenes));
-  corGenes <- corGenes[corGenes[,"value"]<.99,];
+  if(ncol(exprs_SG) > 1){
+    corGenes <- stats::cor(t(exprs_SG))
+    corGenes <- data.frame(reshape2::melt(corGenes))
+    corGenes <- corGenes[corGenes[,"value"]<.99,]
+  } else {
+    corGenes <- expand.grid(rownames(exprs_SG), rownames(exprs_SG))
+    corGenes <- corGenes[which(corGenes$Var1 != corGenes$Var2),]
+  }
 
-  exprs <- as.matrix(exprs);
-  geneRatioOut <- apply(corGenes, FUN=createRatio, MARGIN=1)
-  geneRatioOut <- data.frame(t(geneRatioOut));
+  exprs <- as.matrix(exprs)
+  geneRatioOut <- apply(corGenes, MARGIN = 1, FUN = createRatio)
+  if(ncol(exprs) == 1){
+    geneRatioOut <- as.data.frame(geneRatioOut)
+  } else {
+    geneRatioOut <- data.frame(t(geneRatioOut))
+  }
 
-  rownames(geneRatioOut) <- paste(corGenes[,1], corGenes[,2], sep="_");
+  # assign rownames and column names
+  rownames(geneRatioOut) <- paste(corGenes[,1], corGenes[,2], sep="_")
   colnames(geneRatioOut) <- colnames(exprs)
-  geneRatioOut <- geneRatioOut[!is.infinite(rowSums(geneRatioOut)),] # added
+  geneRatioOut <- geneRatioOut[!is.infinite(rowSums(geneRatioOut)),,drop = F] # added
 
   ################################
   #Filter to signature ratios
   #Create Heatmap
   ################################
 
-  geneRatioOut <- geneRatioOut[intersect(rownames(geneRatioOut), signatureProbes),]
+  geneRatioOut <- geneRatioOut[intersect(rownames(geneRatioOut), signatureProbes),,drop = F]
   return(geneRatioOut)
 
 }
